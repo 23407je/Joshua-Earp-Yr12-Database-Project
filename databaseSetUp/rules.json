@@ -1,0 +1,14 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": false,
+    "SalsStrawberries": {
+"Users": {
+        "$uid": {
+          ".read": true,
+            ".write": "auth.uid === $uid"
+        }
+      }
+    }
+  }
+}
