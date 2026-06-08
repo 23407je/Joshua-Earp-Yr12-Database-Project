@@ -18,7 +18,7 @@ HTML_OUTPUT.innerHTML = "Please wait for us to log you in" + "<br>" + "This proc
     console.log("The User has officially logged in");
     HTML_OUTPUT.innerHTML = "You are logged in successfully!" + "<br>" + "Enjoy playing these games " + GLOBAL_User.displayName;
   } else {
-    console.log("The User is not logged in " + "<br>" + "Ther user verify the login");
+    console.log("The User is not logged in " + "<br>" + "The user must verify the login");
      HTML_OUTPUT.innerHTML = "You are not logged in" + "<br>" + "Login" + GLOBAL_User.displayName;
   }
 
