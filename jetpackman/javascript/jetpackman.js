@@ -11,6 +11,8 @@ let spawnspeed = 50;
 let randomAngle = 0;
 let highscore = 0;
 let jetpackactive = 0;
+import { GLOBAL_User } from '../../gameOptionsPage/script.js';
+console.log(GLOBAL_User)
 function preload() {
     imgplayeridle = loadImage('../images/playeridle.png');
     imgplayerlaunch = loadImage('../images/jetpackstart.gif');
@@ -187,6 +189,11 @@ function draw() {
     //**** saving highscore */
     if (score > highscore) {
         highscore = score;
+            firebase.database().ref('jetpackman/Users/' + GLOBAL_User.uid).update(
+            {
+                Highscore: highscore,
+            }
+    );
     }
     //**** stops the player from moving on the x axis when hit and also stops the walls from moving on the Y axis*/
     playersprite.x = 700
