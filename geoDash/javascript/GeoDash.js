@@ -8,7 +8,7 @@
 /*******************************************************/
 console.log("Running the game");
 
-
+GLOBAL_User = JSON.parse(localStorage.getItem("GLOBAL_User"));
 // End game code
 function endGame(_player, _obstacle){
     console.log("Game ended, you got "+score+" points.")
@@ -16,9 +16,6 @@ function endGame(_player, _obstacle){
     player.remove();
     obstacles.removeAll();
     // Put your database writes here:
-
-
-
 }
 
 
@@ -65,6 +62,7 @@ const OBSTACLE_WIDTH = PLAYER_WIDTH;
 var spawnDist = 0;
 var nextSpawn = 0;
 var score = 0;
+let highscore = 0;
 var player;
   
 var screenSelector = "start";  
@@ -110,8 +108,10 @@ function draw() {
         text("wrong screen - you shouldnt get here", 50, 50);
         console.log("wrong screen - you shouldnt get here")
     }
+    if (score > highscore) {
+    highscore = score
 }
-
+}
 function newObstacle(){
     obstacle = new Sprite((SCREEN_WIDTH + 50),  SCREEN_HEIGHT - OBSTACLE_HEIGHT/2, OBSTACLE_WIDTH, OBSTACLE_HEIGHT, 'k');
     obstacle.color = color("yellow");
@@ -164,6 +164,11 @@ function endScreen(){
     text("your score was: "+score, 50, 110);
     textSize(14);
     text("press any key to restart", 50, 150);
+    firebase.database().ref('geodash/Users/' + GLOBAL_User.uid).update(
+            {
+                Highscore: highscore
+            }
+    );
 }
 
 function resetGame(){

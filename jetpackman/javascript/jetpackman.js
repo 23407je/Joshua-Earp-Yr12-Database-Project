@@ -11,8 +11,8 @@ let spawnspeed = 50;
 let randomAngle = 0;
 let highscore = 0;
 let jetpackactive = 0;
-import { GLOBAL_User } from '../../gameOptionsPage/script.js';
-console.log(GLOBAL_User)
+GLOBAL_User = JSON.parse(localStorage.getItem("GLOBAL_User"));
+console.log(GLOBAL_User);
 function preload() {
     imgplayeridle = loadImage('../images/playeridle.png');
     imgplayerlaunch = loadImage('../images/jetpackstart.gif');
