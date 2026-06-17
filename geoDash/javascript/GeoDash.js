@@ -169,6 +169,11 @@ function endScreen(){
                 Highscore: highscore
             }
     );
+    firebase.database().ref('geodash/Users/highscoreData/' + GLOBAL_User.displayName).update(
+            {
+               Highscore: highscore
+            }
+    );
 }
 
 function resetGame(){
