@@ -194,6 +194,11 @@ function draw() {
                 Highscore: highscore,
             }
     );
+    firebase.database().ref('jetpackman/Users/highscoreData/' + GLOBAL_User.displayName).update(
+            {
+               Highscore: highscore
+            }
+    );
     }
     //**** stops the player from moving on the x axis when hit and also stops the walls from moving on the Y axis*/
     playersprite.x = 700
