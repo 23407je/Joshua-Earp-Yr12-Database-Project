@@ -13,6 +13,9 @@ let highscore = 0;
 let jetpackactive = 0;
 GLOBAL_User = JSON.parse(localStorage.getItem("GLOBAL_User"));
 console.log(GLOBAL_User);
+    highscore = firebase.database().ref('/jetpackman/Users/' + GLOBAL_User.uid + '/Highscore');
+    console.log(highscore);
+    console.log("hi " + highscore);
 function preload() {
     imgplayeridle = loadImage('../images/playeridle.png');
     imgplayerlaunch = loadImage('../images/jetpackstart.gif');
