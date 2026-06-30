@@ -44,3 +44,9 @@ function loginWithGoogle() {
     console.log(GLOBAL_User);
   });
 }
+        firebase.database().ref('/jetpackman/Users/' + GLOBAL_User.uid + '/Highscore').on('value', resetData, fb_error);
+function resetData(data) {
+    let dataValues = data
+    const jetpackman_grab_UserValues = Object.entries(dataValues);
+console.log(jetpackman_grab_UserValues);
+}

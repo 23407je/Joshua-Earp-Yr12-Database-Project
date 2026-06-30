@@ -13,9 +13,12 @@ let highscore = 0;
 let jetpackactive = 0;
 GLOBAL_User = JSON.parse(localStorage.getItem("GLOBAL_User"));
 console.log(GLOBAL_User);
-    highscore = firebase.database().ref('/jetpackman/Users/' + GLOBAL_User.uid + '/Highscore');
-    console.log(highscore);
-    console.log("hi " + highscore);
+firebase.database().ref('/jetpackman/Users/' + GLOBAL_User.uid + '/User_Highscore').on('value', resetData, fb_error);
+function resetData(data) {
+let dataValues = data
+const jetpackman_grab_UserValues = Object.entries(dataValues);
+firebase.database().ref('/jetpackman/Users/highscoreData/' + GLOBAL_User.displayName).set('jetpackman_grab_UserValues[0][1]')
+}
 function preload() {
     imgplayeridle = loadImage('../images/playeridle.png');
     imgplayerlaunch = loadImage('../images/jetpackstart.gif');
@@ -194,12 +197,12 @@ function draw() {
         highscore = score;
             firebase.database().ref('jetpackman/Users/' + GLOBAL_User.uid).update(
             {
-                Highscore: highscore,
+                User_Highscore: highscore,
             }
     );
     firebase.database().ref('jetpackman/Users/highscoreData/' + GLOBAL_User.displayName).update(
             {
-               Highscore: highscore
+               User_Highscore: highscore
             }
     );
     }
