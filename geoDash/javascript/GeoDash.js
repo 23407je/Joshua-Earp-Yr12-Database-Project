@@ -68,6 +68,13 @@ var player;
 var screenSelector = "start";  
 
 var obstacles;
+
+firebase.database().ref('/geodash/Users/' + GLOBAL_User.uid + '/User_Highscore').on('value', resetData, fb_error);
+function resetData(data) {
+let dataValues = data
+const jetpackman_grab_UserValues = Object.entries(dataValues);
+firebase.database().ref('/geodash/Users/highscoreData/' + GLOBAL_User.displayName).set('jetpackman_grab_UserValues[0][1]')
+}
 /*******************************************************/
 // setup()
 /*******************************************************/
@@ -166,12 +173,12 @@ function endScreen(){
     text("press any key to restart", 50, 150);
     firebase.database().ref('geodash/Users/' + GLOBAL_User.uid).update(
             {
-                Highscore: highscore
+                User_Highscore: highscore
             }
     );
     firebase.database().ref('geodash/Users/highscoreData/' + GLOBAL_User.displayName).update(
             {
-               Highscore: highscore
+               User_Highscore: highscore
             }
     );
 }

@@ -2,11 +2,27 @@
   "rules": {
     ".read": true,
     ".write": false,
-    "SalsStrawberries": {
-"Users": {
+    "jetpackman": {
+      "Users": {
+        "highscoreData": {
+          ".read": true,
+          ".write": true
+        },
         "$uid": {
           ".read": true,
-            ".write": "auth.uid === $uid"
+          ".write": "auth.uid === $uid"
+        }
+      }
+    },
+    "geodash": {
+      "Users": {
+        "highscoreData": {
+          ".read": true,
+          ".write": true
+        },
+        "$uid": {
+          ".read": true,
+          ".write": "auth.uid === $uid"
         }
       }
     }
