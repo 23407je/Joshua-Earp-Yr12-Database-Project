@@ -86,7 +86,6 @@ function setup() {
     floor =  new Sprite(SCREEN_WIDTH/2,  SCREEN_HEIGHT, SCREEN_WIDTH, 4, 's');
     floor.color = color("black");
     world.gravity.y = 80;
-    
     document.addEventListener("keydown", 
         function(event) {
             if(screenSelector == "start"||screenSelector == "end"){
@@ -146,6 +145,15 @@ function startScreen(){
 function gameScreen(){
     background("#C39BD3");
     allSprites.visible = true;
+    player.rotationLock = true;
+    if (player.collides(floor)) {
+        if (kb.pressing('w')) {
+console.log("hi")
+        } else {
+        player.vel.y == 0;
+        player.y = 184;
+        }
+    }
     score++;
     if(frameCount> nextSpawn){
         newObstacle();
@@ -189,7 +197,6 @@ function resetGame(){
     player.collides(obstacles, endGame);
     score = 0;
 }
-
 /*******************************************************/
 //  END OF APP
 /*******************************************************/
