@@ -7,10 +7,10 @@ function sortData(snapshot) {
     console.log(snapshot.val())
     let data = snapshot.val()
     console.log(data)
+    console.log(JSON.stringify(data));
     const grab_Userdata = Object.entries(data);
     console.log(grab_Userdata);
     for (let i = 0; i < Math.min(grab_Userdata.length, 5); i++) {
          let leaderboardData_name = grab_Userdata[i][0] + " Highscore: " + grab_Userdata[i][1].Highscore
     }
-    HTML_OUTPUT.innerHTML = leaderboardData_name
 }
