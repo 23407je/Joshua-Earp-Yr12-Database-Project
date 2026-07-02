@@ -21,5 +21,4 @@ function sortJetpackmanData(jetpackmanData) {
         jetpackman_leaderboardData_display += jetpackman_grab_Userdata[i][0] + " Highscore: " + jetpackman_grab_Userdata[i][1].User_Highscore + " <br> "
     }
     HTML_OUTPUT.innerHTML = "<h2>Geodash top 5 highscores:</h2>" + "<br> <br>" + geodash_leaderboardData_display + "<br> <br>" + "<h2>Jetpackman top 5 highscores:</h2>" + "<br> <br>" + jetpackman_leaderboardData_display
->>>>>>> e931366306fc0404e1dfc4f5f0ced60c634a7952
 }

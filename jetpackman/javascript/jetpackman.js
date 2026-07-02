@@ -25,6 +25,11 @@ function preload() {
     imgplayeractive = loadImage('../images/jetpackactive.gif');
     replaySpriteimg = loadImage('../images/replaybutton.png');
     console.log("active");
+    highscore = firebase.database().ref('/jetpackman/Users/' + GLOBAL_User.uid + '/User_Highscore').once('value', snap => {
+        highscore = snap.val();
+        console.log("hi" + highscore);
+        console.log(snap.val());
+    });
 }
 /*******************************************************/
 // setup()
@@ -194,6 +199,7 @@ function draw() {
     }       
     //**** saving highscore */
     if (score > highscore) {
+        
         highscore = score;
             firebase.database().ref('jetpackman/Users/' + GLOBAL_User.uid).update(
             {
