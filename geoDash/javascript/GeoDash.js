@@ -79,6 +79,11 @@ firebase.database().ref('/geodash/Users/highscoreData/' + GLOBAL_User.displayNam
 // setup()
 /*******************************************************/
 function setup() {
+    highscore = firebase.database().ref('/geodash/Users/' + GLOBAL_User.uid + '/User_Highscore').once('value', snap => {
+        highscore = snap.val();
+        console.log("hi" + highscore);
+        console.log(snap.val());
+    });
     cnv= new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
     
     obstacles = new Group();
@@ -177,6 +182,7 @@ function endScreen(){
     text("You died! Too bad :-(", 50, 50);
     textSize(24);
     text("your score was: "+score, 50, 110);
+    text("your highscore is: "+highscore, 50, 180);
     textSize(14);
     text("press any key to restart", 50, 150);
     firebase.database().ref('geodash/Users/' + GLOBAL_User.uid).update(
